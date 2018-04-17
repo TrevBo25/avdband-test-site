@@ -5,12 +5,34 @@ import { Parallax } from 'react-scroll-parallax';
 import logo from './assets/AVDHomeLogoBoom.png';
 import group from './assets/avdalley.jpg';
 import gif from './assets/avdgif.gif'
+import { CLIENT_RENEG_WINDOW } from 'tls';
 
 export default class Home extends Component {
+  constructor(){
+    super()
+    this.state = {
+      show: false
+    }
+    this.handleScroll = this.handleScroll.bind(this)
+  }
+
+  componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(event) {
+    if (window.pageYOffset > 722 && !this.state.show){
+      this.setState({show:true})
+    } else if (window.pageYOffset < 722 && this.state.show){
+      this.setState({show:false})
+    }
+  }
 
   render(){
+    console.log(window.pageYOffset)
     return(
       <div style={styles.holder} >
+        <div style={{}}></div>
         <div style={{"position": "absolute", "top":"0", "right": "21", "zIndex": "1", "height":"40px", "width":"60%", "margin": "15px", "fontSize": "25px", "display": "flex", "justifyContent": "space-around", "alignItems": "center", "borderTop": " 3px black solid", "borderBottom": " 3px black solid", "fontFamily": "Quattrocento"}}>
           <span>Home</span>
           <span>The Band</span>
@@ -91,7 +113,7 @@ const styles = {
     "margin": "0 auto"
   },
   gifholder:{
-    "height": "700px",
+    "height": "800px",
     "width": "100%",
     "backgroundImage": `url(${gif})`,
     "backgroundSize": "cover",
