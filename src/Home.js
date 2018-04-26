@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-
 import { Parallax } from 'react-scroll-parallax';
+import {Link} from 'react-router-dom';
+import { CLIENT_RENEG_WINDOW } from 'tls';
 
-import logo from './assets/AVDHomeLogoBoom.png';
+import logo from './assets/AVDLogoNBG.png';
 import group from './assets/avdalley.jpg';
 import gif from './assets/avdgif.gif'
-import { CLIENT_RENEG_WINDOW } from 'tls';
+
+import Nav from './Nav'
 
 export default class Home extends Component {
   constructor(){
@@ -33,14 +35,7 @@ export default class Home extends Component {
     return(
       <div style={styles.holder} >
         <div style={{}}></div>
-        <div style={{"position": "absolute", "top":"0", "right": "21", "zIndex": "1", "height":"40px", "width":"60%", "margin": "15px", "fontSize": "25px", "display": "flex", "justifyContent": "space-around", "alignItems": "center", "borderTop": " 3px black solid", "borderBottom": " 3px black solid", "fontFamily": "Quattrocento"}}>
-          <span>Home</span>
-          <span>The Band</span>
-          <span>Tour</span>
-          <span>Media</span>
-          <span>Store</span>
-          <span>Contact</span>
-        </div>
+          <Nav />
         <div style={{"overflow":"hidden"}}>
           <Parallax
             styleOuter={styles.hero}
@@ -91,7 +86,7 @@ const styles = {
   holder:{
     "maxWidth": "100vw",
     "height": "100%",
-    "backgroundColor": "#eab980",
+    "backgroundColor": "#FFFFFF",
     "display": "flex",
     "flexDirection": "column",
     "justifyContent": "center",
